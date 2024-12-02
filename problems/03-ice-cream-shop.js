@@ -12,8 +12,18 @@ iceCreamShop(['moose tracks'], 'moose tracks'); // true
 iceCreamShop([], 'honey lavender'); // false
 ***********************************************************************/
 
+function iceCreamShop(flavors, favorite){
+  if (flavors.length === 0) {
+    return false; // Base case of recursive function
+  }
 
-// your code here
+  // Checks whether first icecream in array is favorite and returns true if so
+  if(flavors[0] === favorite){
+    return true;
+  }
+    // Recursive step that pops the first position off the array and recursively calls itself
+    return iceCreamShop(flavors.slice(1), favorite);
+}
 
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/

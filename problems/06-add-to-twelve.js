@@ -12,7 +12,20 @@ addToTwelve([1, 12, 4, 7, 6]); // false
 addToTwelve([1]); // false
 ***********************************************************************/
 
-// your code here
+function addToTwelve(arr){
+  // Base case: If array reaches length 1 return false as no adjacent values add to 12
+  if (arr.length === 1){
+    return false;
+  }
+  // True case: If two adjacent values adds to 12 program will exit recursion returning true
+  if (arr[0] + arr[1] === 12){
+    return true;
+  }
+
+  // Recursive case: function will return itself with the arr first value removed
+  return addToTwelve(arr.slice(1));
+
+}
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {

@@ -10,9 +10,15 @@ range(3, 4); // [3]
 range(7, 6); // []
 ***********************************************************************/
 
+function range(start, end){
+  // Base case: if the end is less than or equal to start, return an empty array
+  if (end <= start) {
+    return [];
+  }
 
-// your code here
-
+  // Recursive case: Add the current start to the result of range(start + 1, end)
+  return [start, ...range(start + 1, end)];
+}
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {

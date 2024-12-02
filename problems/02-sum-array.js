@@ -10,8 +10,14 @@ sumArray([0, 1, -3]); //  -2
 sumArray([1, 2, 3, 4, 5]); // 15
 ***********************************************************************/
 
-// your code here
-  
+// Uses a paramter i to set initial index number
+function sumArray (arr, i = 0){
+  if (i === arr.length) return 0; // Base case for recursion
+
+  // Recursive step - Adds the number and iterates the index with each recursive call
+  return arr[i] + sumArray (arr, i+1);
+}
+
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
   module.exports = sumArray;

@@ -12,7 +12,17 @@ reverse("id"); // "di"
 reverse(""); // ""
 ***********************************************************************/
 
-// your code here
+function reverse(string){
+  // Base case for an empty string or string length of 1
+  if (string.length <= 1){
+    return string;
+  }
+
+  // Recursive case / step, starts with last letter and concatenates reverse(string.slice(0, -1)
+  // this calls the function with the end character removed.
+  return string.slice(-1) + reverse(string.slice(0, -1));
+}
+
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {

@@ -59,7 +59,38 @@ function greedyMakeChange(target, coins = [25, 10, 5, 1]) {
 }
 
 function makeBetterChange(target, coins = [25, 10, 5, 1]) {
-  // your code here
+  // Base case: If the Target is 0, return an empty array (no more coins needed)
+  if (target === 0) {
+    return [];
+}
+
+// Base case: If the Target is negative, no valid change can be made
+if (target < 0) {
+    return null;
+}
+
+let bestSolution = null;
+
+// Try each coin and recursively find the best combination
+for (let i = 0; i < coins.length; i++) {
+    const coin = coins[i];
+    // Get the remaining Target after using one of the current coin
+    const remainingTarget = target - coin;
+
+    // Recursively find the best solution for the remaining Target
+    const remainingSolution = makeBetterChange(remainingTarget, coins.slice(i));
+
+    // If a valid solution is found, compare it to the current best solution
+    if (remainingSolution !== null) {
+        const solution = [coin, ...remainingSolution];
+        // If it's the first solution or better (fewer coins), update the best solution
+        if (bestSolution === null || solution.length < bestSolution.length) {
+            bestSolution = solution;
+        }
+    }
+}
+
+return bestSolution;
 }
 
 

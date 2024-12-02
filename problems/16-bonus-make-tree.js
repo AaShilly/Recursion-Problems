@@ -64,8 +64,17 @@ The call above should return the tree below:
 ***********************************************************************/
 
 const makeTree = (categories, parent) => {
-  // your code here
+  // Filter categories that have the current parent
+  const children = categories.filter(category => category.parent === parent);
+
+  // Reduce the filtered categories into a nested tree structure
+  // Creates each subsection object ID based off the parent key value
+  return children.reduce((tree, category) => {
+    tree[category.id] = makeTree(categories, category.id); // Recursive step
+    return tree;
+  }, {});
 };
+
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {

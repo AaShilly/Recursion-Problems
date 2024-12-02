@@ -22,8 +22,30 @@ sort([]); // []
 ***********************************************************************/
 
 function sort(nums, sorted = []) {
-  // your code here
+  // Base Case: If nums is empty it will return the sorted array
+  if (nums.length === 0){
+    return sorted;
+  }
+
+  // Creates and stores the lowest number from nums within a variable
+  let lowestNum = nums.reduce((min, currentEl) => {
+    if (min < currentEl){
+      return min;
+    }
+    return currentEl;
+  });
+
+  // Adds the current lowest number to the sorted array
+  sorted.push(lowestNum);
+
+  // Removes the current lowest number from the nums array
+  nums.splice(nums.indexOf(lowestNum), 1);
+
+  // Recusursive case: Calls function with updated nums and sorted array
+  return sort(nums, sorted);
 }
+
+sort([4,1,6,3,1,7]); // [1, 1, 3, 4, 6, 7]
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
